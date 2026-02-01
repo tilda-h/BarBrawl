@@ -7,17 +7,34 @@ import java.awt.Image;
 
 public class Drinks extends GameAsset {
     
-    int alcContent;
+    drinkType type;
+    int volume;
     
-    public Drinks(int x, int y, Image img, String name, int alcContent) {
+        
+    public Drinks(int x, int y, Image img, String name, drinkType type, int volume) {
         super(x, y, img, name);
-        this.alcContent = alcContent;
+        this.type = type;
+        this.volume = volume;
     }
 
     public int getAlcContent() {
-        return alcContent;
+        return volume * type.alcContent/100;
     }
     
     
+    public void drinkIt() {
+        if (this.volume != 0){
+            this.volume = 0;
+        Effect effect = type.effect;
+        System.out.println("uf lecker");
+        } else {
+            System.out.println("aww man! Wer hat das denn ausgetrunken?!");
+        }
+    }
+    
+    // Create an Effect for the wine
+    
+    // spieler verändern: bildschirm schummerig, mehr health, mehr gespräch unlocked
     
 }
+
