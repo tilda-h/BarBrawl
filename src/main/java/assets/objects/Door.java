@@ -6,52 +6,48 @@ import java.awt.Image;
 
 
 public class Door extends GameAsset{
+
+    private DoorState state;
+
+    public enum DoorState {
+        CLOSED,
+        OPEN,
+        KICKED_IN
+    }
     
-    boolean open;
-    boolean locked;
-    
-    public Door(int x, int y, Image img, boolean locked) {
+    public Door(int x, int y, Image img) {
         super(x, y, img, "door");
-        open = false;
-        this.locked = locked;
+        this.state = DoorState.CLOSED;
         //Map.setNotWalkable(x, y, 2); // idea radius 2 around coords not walkable
     }
 
-    public boolean isOpen() {
-        return open;
-    }
-    
-    public boolean isLocked() {
-        return locked;
+    public DoorState getState() {
+        return state;
     }
 
-    public void setOpen(boolean open) {
-        if (!locked) {
-            this.open = open;
-            if (!open) {
-                //Map.setNotWalkable(x, y, 2); // idea radius 2 around coords not walkable
-            } else if(open) {
-                //Map.setNotWalkable(x, y, 2); // INVERSE!!!!!
-            }
+    public void open(boolean hasKey) {
+        if (state == DoorState.CLOSED && hasKey) {
+            state = DoorState.OPEN;
+            //Map.setWalkable(x, y, 2);
+            System.out.println("Hereinspaziert");
+        } else if (state == DoorState.OPEN && hasKey) {
+            state = DoorState.CLOSED;
+            //Map.setNotWalkable(x, y, 2);
+            System.out.println("die Tür ist zu");
+        } else if (!hasKey) {
+            System.out.println("Kein Schlüssel, kein Zugang");
         }
     }
-    
-    public void setLocked(boolean locked, boolean key) {
-        if (!open || key) {
-            this.locked = locked;
+
+    public void kickIn() {
+        if (state != DoorState.KICKED_IN) {
+            state = DoorState.KICKED_IN;
+            //Map.setWalkable(x, y, 2);
+            System.out.println("Die Tür ist weg (Könnte 'ne Tasse Tee vertragen. War keine leichte Reise...)");
         } else {
-            System.out.println("ya cant (un)lock an open door, and ya need a 0--> (key)");
+            System.out.println("man kann die tür nicht zwei mal eintreten");
         }
     }
-    
-    public void setOpenKick (boolean kickable) { // kickable .. player could need certain strength or other
-        if (!open || kickable) {
-            this.open = true; // unchangeable
-            this.locked = false; // door now destroyed, hagrid style
-        }
-    }
+
     
 }
-
-
-// make door lockable, able to kick open
