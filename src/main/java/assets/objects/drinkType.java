@@ -6,6 +6,7 @@ package assets.objects;
 
 
 public enum drinkType {
+    // enum drinktypes
     GIN("Gin", 44, new Effect(10, true)),
     BEER("Beer", 5, new Effect(10, 10)),
     WINE("Wine", 7, new Effect(10, 10)),
@@ -15,7 +16,7 @@ public enum drinkType {
     public final int alcContent;
     public final Effect effect;
 
-
+    // Konstruktor
     private drinkType(String name, int alcContent, Effect effect) {
         this.name = name;
         this.alcContent = alcContent;

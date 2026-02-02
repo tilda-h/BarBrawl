@@ -15,16 +15,18 @@ public class Door extends GameAsset{
         KICKED_IN
     }
     
+    // Konstruktor Tür
     public Door(int x, int y, Image img) {
         super(x, y, img, "door");
         this.state = DoorState.CLOSED;
-        //Map.setNotWalkable(x, y, 2); // idea radius 2 around coords not walkable
+        //Map.setNotWalkable(x, y, 2);
     }
 
     public DoorState getState() {
         return state;
     }
 
+    // Funktion Öffnen/Schließen
     public void open(boolean hasKey) {
         if (state == DoorState.CLOSED && hasKey) {
             state = DoorState.OPEN;
@@ -39,6 +41,7 @@ public class Door extends GameAsset{
         }
     }
 
+    // Funktion Eintreten
     public void kickIn() {
         if (state != DoorState.KICKED_IN) {
             state = DoorState.KICKED_IN;

@@ -8,6 +8,9 @@ package main;
 // imports (tilda)
 import assets.objects.Drinks;
 import assets.objects.drinkType;
+import assets.objects.Chair;
+import assets.objects.Door;
+
 import java.awt.Image;
 
 
@@ -31,6 +34,13 @@ public class Main {
 
         Drinks glasWein = new Drinks(0, 0, image, "Weinglas",drinkType.WINE, 200);
         glasWein.drinkIt();
+        glasWein.drinkIt();
+        
+        Chair Stuhl1 = new Chair(0,0,image);
+        Stuhl1.throwIt(0);
+        
+        Door Tur1 = new Door(0,0,image);
+        Tur1.open(true);
 
     }
 }
