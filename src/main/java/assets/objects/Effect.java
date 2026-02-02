@@ -9,25 +9,40 @@ public class Effect {
     private int healthBoost;
 
     // Konstruktor Effekt 1
-    public Effect(int duration, boolean isBlurry) {
-        this.duration = duration;
-        this.isBlurry = isBlurry;
-        this.healthBoost = 0; 
-        
-        //Player.setVision();
-        
-        System.out.println("Careful! Blurry Vision! Dont stub your toe!");
+    public Effect(int effectNumber) {
+        switch (effectNumber) {
+            case 1: // Gin
+                this.duration = 10;
+                this.isBlurry = true;
+                this.healthBoost = 0;
+                //Player.setVisison();
+                break;
+            case 2: // Beer
+                this.duration = 5;
+                this.isBlurry = false;
+                this.healthBoost = 10; 
+                //Player.setHealth();
+                break;
+            case 3: // Wine
+                this.duration = 7;
+                this.isBlurry = true;
+                this.healthBoost = 5;
+                //Player.setVision();
+                //Player.setHealth();
+                break;
+            case 4: // Mysterydrink
+                this.duration = 15;
+                this.isBlurry = true;
+                this.healthBoost = 0;
+                //Player.setVision();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid effect number");
+        }
     }
 
-    // konstruktor Effekt 2
-    public Effect(int duration, int healthBoost) {
-        this.duration = duration;
-        this.isBlurry = false; 
-        this.healthBoost = healthBoost;
+    public void apply () {
         
-        //Player.setHealth();
-        
-        System.out.println("Wow! Drugs are good for you! Health-Boost!");
     }
     
     public boolean isBlurry() {

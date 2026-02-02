@@ -26,7 +26,7 @@ public class Drinks extends GameAsset {
     public void drinkIt() {
         if (this.volume != 0){
             this.volume = 0;
-        Effect effect = type.effect;
+        //type.effect.apply();
         System.out.println("uf lecker");
         } else {
             System.out.println("aww man! Wer hat das denn ausgetrunken?!");

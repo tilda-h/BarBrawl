@@ -7,17 +7,17 @@ package assets.objects;
 
 public enum drinkType {
     // enum drinktypes
-    GIN("Gin", 44, new Effect(10, true)),
-    BEER("Beer", 5, new Effect(10, 10)),
-    WINE("Wine", 7, new Effect(10, 10)),
-    MYSTERYDRINK("Mysterydrink", 80, new Effect(15, true));
+    GIN("Gin", 44, 1),
+    BEER("Beer", 5, 2),
+    WINE("Wine", 7, 3),
+    MYSTERYDRINK("Mysterydrink", 80, 4);
 
     public final String name;
     public final int alcContent;
-    public final Effect effect;
+    public final int effect;
 
     // Konstruktor
-    private drinkType(String name, int alcContent, Effect effect) {
+    private drinkType(String name, int alcContent, int effect) {
         this.name = name;
         this.alcContent = alcContent;
         this.effect = effect;
